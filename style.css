@@ -1,0 +1,269 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+  --neon: #c6ff3d;          /* 포인트: 네온 연두 */
+  --neon-soft: #9be22b;
+  --neon-glow: rgba(198, 255, 61, .35);
+  --bg: #0a0d0b;            /* 바탕: 거의 검정 */
+  --bg-2: #101511;
+  --card: #141a15;
+  --card-2: #1a221b;
+  --line: #26332a;
+  --ink: #eef7e6;           /* 기본 글자 */
+  --muted: #9aaa98;
+  --on-neon: #0a0d0b;       /* 네온 위 글자 */
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 19px; }
+@media (min-width: 768px) { html { font-size: 20px; } }
+
+body {
+  margin: 0;
+  font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(198,255,61,.10), transparent 60%),
+    radial-gradient(700px 400px at -10% 30%, rgba(61,255,180,.06), transparent 60%),
+    var(--bg);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+a { color: inherit; }
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 18px; }
+
+/* ---------- 상단 ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 52px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(rgba(198,255,61,.06) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgba(198,255,61,.06) 1px, transparent 1px) 0 0 / 32px 32px,
+    radial-gradient(600px 300px at 50% 0%, rgba(198,255,61,.18), transparent 70%),
+    var(--bg-2);
+}
+.hero .badge {
+  display: inline-block;
+  background: rgba(198,255,61,.1);
+  border: 1px solid rgba(198,255,61,.45);
+  color: var(--neon);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.35;
+  font-weight: 800;
+  color: #fff;
+}
+.hero h1 .glow, .hero h1 { text-shadow: 0 0 28px rgba(198,255,61,.25); }
+@media (min-width: 768px) { .hero h1 { font-size: 2.5rem; } }
+.hero p { margin: 14px 0 0; color: var(--muted); font-size: 1.05rem; }
+
+.download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  background: var(--neon);
+  color: var(--on-neon);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 16px 30px;
+  min-height: 56px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px var(--neon), 0 0 28px var(--neon-glow);
+  transition: box-shadow .15s, transform .15s;
+}
+.download:hover, .download:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px var(--neon), 0 0 44px rgba(198,255,61,.6);
+  outline: none;
+}
+
+/* ---------- 공통 섹션 ---------- */
+section { padding: 36px 0 8px; }
+h2 {
+  font-size: 1.45rem;
+  margin: 0 0 6px;
+  color: #fff;
+  display: flex; align-items: center; gap: 10px;
+}
+h2::before {
+  content: "";
+  width: 10px; height: 10px; border-radius: 3px;
+  background: var(--neon);
+  box-shadow: 0 0 12px var(--neon);
+}
+.sub { color: var(--muted); margin: 0 0 20px; font-size: 0.95rem; }
+
+/* ---------- 개요 ---------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+.info {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.info .label { font-size: 0.85rem; font-weight: 700; color: var(--neon); }
+.info .value { font-size: 1.15rem; font-weight: 700; margin-top: 4px; }
+.info ul { margin: 6px 0 0; padding-left: 1.1em; font-weight: 600; }
+
+/* ---------- 목차 카드 ---------- */
+.toc {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) { .toc { grid-template-columns: 1fr 1fr; } }
+
+.card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  text-decoration: none;
+  background: linear-gradient(160deg, var(--card-2), var(--card));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  min-height: 120px;
+  transition: transform .15s, border-color .15s, box-shadow .15s;
+}
+.card:hover, .card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--neon);
+  box-shadow: 0 0 0 1px var(--neon), 0 0 30px rgba(198,255,61,.18);
+  outline: none;
+}
+.card .num {
+  flex: none;
+  width: 58px; height: 58px;
+  border-radius: 16px;
+  display: grid; place-items: center;
+  background: rgba(198,255,61,.1);
+  border: 1px solid rgba(198,255,61,.5);
+  color: var(--neon);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-shadow: 0 0 12px var(--neon-glow);
+}
+.card .tag { font-size: 0.8rem; font-weight: 700; color: var(--neon); letter-spacing: .02em; }
+.card .title { font-size: 1.15rem; font-weight: 800; line-height: 1.45; margin-top: 2px; color: #fff; }
+.card .desc { font-size: 0.92rem; color: var(--muted); margin-top: 4px; }
+.card .go { margin-left: auto; font-size: 1.4rem; color: var(--neon); flex: none; }
+
+/* ---------- 준비물 ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  background: var(--card);
+  border: 1px solid rgba(198,255,61,.4);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ---------- 차시 페이지 ---------- */
+.topbar {
+  background: rgba(10,13,11,.82);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 60px; gap: 12px; }
+.topbar a { text-decoration: none; font-weight: 700; color: var(--neon); font-size: 0.95rem; }
+.topbar .site { color: var(--muted); font-size: 0.85rem; text-align: right; }
+
+.lesson-hero { padding: 40px 0 28px; }
+.lesson-hero .badge {
+  display: inline-block;
+  background: var(--neon);
+  color: var(--on-neon);
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  box-shadow: 0 0 20px var(--neon-glow);
+}
+.lesson-hero h1 { font-size: 1.9rem; line-height: 1.4; margin: 14px 0 0; color: #fff; }
+@media (min-width: 768px) { .lesson-hero h1 { font-size: 2.3rem; } }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  margin-bottom: 18px;
+}
+.panel h2 { font-size: 1.2rem; margin-bottom: 14px; }
+.items { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.items li {
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 18px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex; gap: 12px; align-items: center;
+}
+.items li::before {
+  content: "";
+  flex: none;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 10px var(--neon);
+}
+.note {
+  background: rgba(198,255,61,.08);
+  border: 1px dashed rgba(198,255,61,.5);
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-weight: 600;
+  color: var(--neon);
+}
+
+.pager {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin: 28px 0 8px;
+}
+.pager a {
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px 18px;
+  font-weight: 700;
+  min-height: 72px;
+}
+.pager a:hover { border-color: var(--neon); }
+.pager small { display: block; color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+.pager .next { text-align: right; grid-column: 2; }
+.pager .home {
+  grid-column: 1 / -1; text-align: center;
+  background: var(--neon); border-color: var(--neon); color: var(--on-neon);
+  box-shadow: 0 0 24px var(--neon-glow);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 40px 0 48px;
+}
